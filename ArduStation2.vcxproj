@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{F81D2F91-F2AC-4B5F-B4AF-52451962ADDB}</ProjectGuid>
+    <RootNamespace>ArduStation2</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>D:\Program Files\Arduino105\hardware\arduino\cores\arduino;D:\Program Files\Arduino105\hardware\arduino\variants\standard;D:\Program Files\Arduino105\libraries\FastSerial;D:\Program Files\Arduino105\libraries\FastSerial\utility;D:\Program Files\Arduino105\libraries\GCS_MAVLink;D:\Program Files\Arduino105\libraries\GCS_MAVLink\utility;D:\Program Files\Arduino105\libraries\LiquidCrystal;D:\Program Files\Arduino105\libraries\LiquidCrystal\utility;D:\Program Files\Arduino105\libraries\EEPROM;D:\Program Files\Arduino105\libraries\EEPROM\utility;D:\Program Files\Arduino105\libraries\AP_EEPROMB;D:\Program Files\Arduino105\libraries\AP_EEPROMB\utility;D:\Program Files\Arduino105\libraries\VarSpeedServo;D:\Program Files\Arduino105\libraries\VarSpeedServo\utility;d:\program files\arduino105\hardware\tools\avr\avr\include\;d:\program files\arduino105\hardware\tools\avr\avr\include\avr\;d:\program files\arduino105\hardware\tools\avr\avr\;d:\program files\arduino105\hardware\tools\avr\lib\gcc\avr\4.3.2\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ForcedIncludeFiles>F:\Users\ENWIN\Documents\GitHub\ArduStation2\Visual Micro\.ArduStation2.vsarduino.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <IgnoreStandardIncludePath>true</IgnoreStandardIncludePath>
+      <PreprocessorDefinitions>__AVR_ATmega328p__;__AVR_ATmega328P__;ARDUINO=105;ARDUINO_MAIN;__AVR__;__avr__;F_CPU=16000000L;__cplusplus;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="Antenna.pde">
+      <FileType>CppCode</FileType>
+    </None>
+    <None Include="ArduStation2.pde">
+      <FileType>CppCode</FileType>
+    </None>
+    <None Include="Buttons.pde">
+      <FileType>CppCode</FileType>
+    </None>
+    <None Include="Buzzer.pde">
+      <FileType>CppCode</FileType>
+    </None>
+    <None Include="EEPROM.pde">
+      <FileType>CppCode</FileType>
+    </None>
+    <None Include="Flight_Data.pde">
+      <FileType>CppCode</FileType>
+    </None>
+    <None Include="GPS_MATH.pde">
+      <FileType>CppCode</FileType>
+    </None>
+    <None Include="MAVLink.pde">
+      <FileType>CppCode</FileType>
+    </None>
+    <None Include="Params.pde">
+      <FileType>CppCode</FileType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Visual Micro\.ArduStation2.vsarduino.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
