@@ -431,34 +431,42 @@ void loop()
 		}
 	case SERIAL_DIAG: // Serial port & parameter diagnostics
 		{
+			if (subMenu == 1) 
+			{
 
-			lcd.setCursor(0,1);
-			for (b_ct = 0; b_ct<7; b_ct++) // display bitmap of parameters received.
-			{ 
-				if (param_rec[b_ct] < 16)
-					lcd.print(0);
-				lcd.print(param_rec[b_ct],HEX);
-			}
-			lcd.setCursor(17,0);
-			if (last_byte_per<10)
-				lcd.print(" ");
-			if (last_byte_per<100)
-				lcd.print(" ");
-			lcd.print(last_byte_per);
-			lcd.setCursor(18,1);
-			if (redraw==1)
 				for (b_ct = 0; b_ct<15; b_ct++)
 				{
+					if (b_ct==0)
+						lcd.setCursor(0,0);
+					if (b_ct==7)
+						lcd.setCursor(0,1);
 					if (byt[b_ct]<16)
 						lcd.print(0);
 					lcd.print(byt[b_ct],HEX);
-					lcd.print(" ");
-					if (b_ct==0)
-						lcd.setCursor(0,2);
-					if (b_ct==7)
-						lcd.setCursor(0,3);
+					lcd.print(" ");	
 				}
-				break;
+			}
+			else
+			{
+				lcd.setCursor(0,0);
+				lcd_print_P(PSTR("ParamRec["));
+				if (last_byte_per<10)
+					lcd.print(" ");
+				if (last_byte_per<100)
+					lcd.print(" ");
+				lcd.print(last_byte_per);
+				lcd_print_P(PSTR("]"));
+
+				lcd.setCursor(0,1);
+				for (b_ct = 0; b_ct<7; b_ct++)			 
+				{ 
+					if (param_rec[b_ct] < 16)
+						lcd.print(0);
+					lcd.print(param_rec[b_ct],HEX);
+					lcd.print(" ");	
+				}
+			}
+			break;
 		}
 
 	case EDIT_PARAM:
@@ -547,7 +555,7 @@ void main_menu() //Ö÷²Ëµ¥ÏÔÊ¾
 		break;
 	} 
 
-	lcd.print(">");
+	lcd.print("~");
 	redraw = 0;  
 }
 

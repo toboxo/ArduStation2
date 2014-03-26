@@ -184,7 +184,7 @@ void get_params()
 
 		lcd_print_P(PSTR("Requesting Params..."));
 		lcd.setCursor(0,1);
-		lcd_print_P(PSTR("Params Received:"));
+		lcd_print_P(PSTR("Received:"));
 		lcd.print(paramsRecv+1);
 		lcd_print_P(PSTR("/"));
 		lcd.print(TOTAL_PARAMS);
@@ -225,7 +225,7 @@ void list_params()
 				lcd.setCursor(12,i);
 				if (i == currentOption%2)
 				{
-					lcd.print(">");
+					lcd.print("~");
 					strcpy(editParm.key, temp.key);
 					editParm.value = temp.value;
 				}

@@ -52,14 +52,14 @@ void SetAntennaPosition()
 	if (editServo<2)
 	{
 		if (editServo==0)
-			lcd_print_P(PSTR(">"));
+			lcd_print_P(PSTR("~"));
 		else 
 			lcd_print_P(PSTR(" "));
 		lcd_print_P(PSTR("Pan:"));
 		lcd.print(pan_pos*2);
 		lcd.setCursor(10,0);
 		if (editServo==1)
-			lcd_print_P(PSTR(">"));
+			lcd_print_P(PSTR("~"));
 		else 
 			lcd_print_P(PSTR(" "));
 		lcd_print_P(PSTR("Tilt:"));
@@ -77,15 +77,15 @@ void SetAntennaPosition()
 		lcd_print_P(PSTR("Set Pan Low & High"));
 		lcd.setCursor(0,1);
 		if (editServo==2)
-			lcd_print_P(PSTR(">L "));
+			lcd_print_P(PSTR("~L:"));
 		else
-			lcd_print_P(PSTR(" L "));
+			lcd_print_P(PSTR(" L:"));
 		lcd.print(panLow);
 		lcd.setCursor(10,1);
 		if (editServo==3)
-			lcd_print_P(PSTR(">H "));
+			lcd_print_P(PSTR("~H:"));
 		else
-			lcd_print_P(PSTR(" H "));
+			lcd_print_P(PSTR(" H:"));
 		lcd.print(panHigh); 
 	}
 	if (editServo>3)
@@ -94,21 +94,23 @@ void SetAntennaPosition()
 		lcd_print_P(PSTR("Set Tilt Low & High"));
 		lcd.setCursor(0,1);
 		if (editServo==4)
-			lcd_print_P(PSTR(">L "));
+			lcd_print_P(PSTR("~L:"));
 		else
-			lcd_print_P(PSTR(" L "));
+			lcd_print_P(PSTR(" L:"));
 		lcd.print(tiltLow);
 		lcd.setCursor(10,1);
 		if (editServo==5)
-			lcd_print_P(PSTR(">H "));
+			lcd_print_P(PSTR("~H:"));
 		else
-			lcd_print_P(PSTR(" H "));
+			lcd_print_P(PSTR(" H:"));
 		lcd.print(tiltHigh); 
 	}
 	redraw=0;   
 }
 
-void SetServoHardStop() // menu 2
+//AntStop
+
+void SetServoHardStop() 
 {
 	chg_angle=0;
 	if (pan_pos>180) 
@@ -117,11 +119,25 @@ void SetServoHardStop() // menu 2
 		pan_pos=0;
 	Pan.slowmove(pan_pos,PAN_SPEED);
 	lcd.clear();
-	lcd_print_P(PSTR("Tilt~"));
-	lcd.print(tilt_pos);
-	lcd.setCursor(10,0);
-	lcd_print_P(PSTR("Pan~"));
+
+	if (subMenu==1)
+		lcd_print_P(PSTR(" "));
+	else
+		lcd_print_P(PSTR("~"));
+
+	lcd_print_P(PSTR("Pan:"));
 	lcd.print(pan_pos);
+
+	lcd.setCursor(10,0);
+
+	if (subMenu==1)
+		lcd_print_P(PSTR("~"));
+	else
+		lcd_print_P(PSTR(" "));
+ 
+	lcd_print_P(PSTR("Tilt:"));
+	lcd.print(tilt_pos);
+
 	lcd.setCursor(0,1);
 	lcd_print_P(PSTR("Compass="));
 	lcd.print((180.0-pan_pos)*2.0);

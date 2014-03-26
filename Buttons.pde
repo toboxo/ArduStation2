@@ -1,90 +1,3 @@
-//unsigned char Button_0()
-//{
-//  static byte lock; 
-//  pinMode(13,LOW);
-//  pinMode(11, OUTPUT);
-//  digitalWrite(11, HIGH);
-//  pinMode(12, INPUT);
-//
-//  if(digitalRead(12) == HIGH)
-//  return 1;
-//  else
-//  return 0;
-//}
-//
-////Button2: PORTB6 output, check PINB7
-//unsigned char Button_1()
-//{
-//  static byte lock;
-//  digitalWrite(11, LOW);
-//  pinMode(12, OUTPUT);
-//  digitalWrite(12, HIGH);
-//  pinMode(13, INPUT);
-//
-//  if(digitalRead(13) == HIGH)
-//  return 1;
-//  else
-//  return 0;
-//}
-//
-////Button3: PORTB7 output, check PINB5
-//unsigned char Button_2()
-//{
-//  static byte lock;
-//  pinMode(12,LOW);
-//  pinMode(13, OUTPUT);
-//  digitalWrite(13, HIGH);
-//  pinMode(11, INPUT);
-//  if(digitalRead(11) == HIGH)
-//  return 1;
-//  else
-//  return 0;
-//}
-//
-////Button4: PORTB6 output, check PINB5
-//unsigned char Button_3()
-//{
-//  static byte lock;
-//  pinMode(13,LOW);
-//  pinMode(12, OUTPUT);
-//  digitalWrite(12, HIGH);
-//  pinMode(11, INPUT);
-//  if(digitalRead(11) == HIGH)
-//  return 1;
-//  else
-//  return 0;
-//}
-//
-////Button5: PORTB7 output, check PINB6
-//unsigned char Button_4()
-//{
-//  static byte lock;
-//  pinMode(11,LOW);
-//  pinMode(13, OUTPUT);
-//  digitalWrite(13, HIGH);
-//  pinMode(12, INPUT);
-//  if(digitalRead(12) == HIGH)
-//  return 1;
-//  else
-//  return 0;
-//}
-//
-////Button1: PORTB6 output, check PINB7
-//unsigned char Button_5()
-//{
-//  pinMode(12,LOW);
-//  pinMode(11, OUTPUT);
-//  digitalWrite(11, HIGH);
-//  pinMode(13, INPUT);
-//  
-//  if(digitalRead(13)==HIGH)
-//  return 1;
-//  else
-//  return 0;
-//}
-
-/*********************************************/
-
 unsigned char Button_0()
 {
 	if (digitalRead(A0)==HIGH)
@@ -178,7 +91,6 @@ void Check_Buttons(byte max_options) //Reading the buttons.
 		}
 		else if ((menu==FLIGHT_DATA) && (subMenu==3))
 		{
-
 			if (VoltWarn<12.6)
 			{
 				VoltWarn+=0.1;
@@ -234,7 +146,10 @@ void Check_Buttons(byte max_options) //Reading the buttons.
 		}
 		else if (menu == ANTS)		//ANTS
 		{
-			pan_pos-=10;
+			if (subMenu ==1)
+				tilt_pos -= 5;
+			else
+				pan_pos -= 5;
 			redraw = 1;
 		}
 		else if (menu == 10)
@@ -322,11 +237,8 @@ void Check_Buttons(byte max_options) //Reading the buttons.
 			{
 				menu = SERIAL_DIAG;
 				redraw = 1;
-			}
-			else if (currentOption==13) // Serial stat
-			{
-				menu = SERIAL_DIAG;
-				redraw = 1;
+				subMenu = 0;
+				lcd.clear();
 			}
 		}
 		else if (menu == EDIT_VIEW_PARAMS) // edit single param based on current option
@@ -355,7 +267,7 @@ void Check_Buttons(byte max_options) //Reading the buttons.
 		}
 		else if (menu==ANTS)
 		{
-			menu=MAIN_MENU;
+			subMenu = 1-subMenu;
 			redraw = 1;
 		}
 		else if (menu == ANT_TEST)
@@ -363,6 +275,12 @@ void Check_Buttons(byte max_options) //Reading the buttons.
 			editServo++;
 			if (editServo>5)
 				editServo =0;
+			redraw = 1;
+		}
+		else if (menu==SERIAL_DIAG)
+		{
+			subMenu = 1-subMenu;
+			lcd.clear();
 			redraw = 1;
 		}
 	}
@@ -434,8 +352,11 @@ void Check_Buttons(byte max_options) //Reading the buttons.
 		}
 		else if (menu == ANTS)
 		{
-			pan_pos+=10;
-			redraw=1;
+			if (subMenu ==1)
+				tilt_pos += 5;
+			else
+				pan_pos += 5;
+			redraw = 1;
 		}
 		else if (menu == 10)
 		{
