@@ -29,5 +29,8 @@
     <ClInclude Include="Visual Micro\.ArduStation2.vsarduino.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="parameter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

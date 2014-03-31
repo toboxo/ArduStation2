@@ -58,7 +58,7 @@ FastSerialPort0(Serial);
 
 #define DIST_CONV 1.0   // For distance display in meters choose 0.0, for feet 3.2808
 
-LiquidCrystal lcd(2, 3, 4, 5, 6, 7); //初始化LCD 234567
+LiquidCrystal lcd(  3, 4, 5, 6, 7,8); //初始化LCD 234567
 
 void lcd_print_P(const char *string)
 {
@@ -83,14 +83,14 @@ unsigned long timer;
 #define TEST_SOUTH 0				//测试南
 VarSpeedServo Tilt;
 VarSpeedServo Pan;
-#define TILTLOW 591
-#define TILTHIGH 2235
-#define PANLOW  609					 
-#define PANHIGH 2255
+#define TILTLOW 1000
+#define TILTHIGH 2000
+#define PANLOW  980					 
+#define PANHIGH 2020
 #define TILTREVERSE 0				// 倾斜反输出（0默认，1反向）
 #define PANREVERSE 0				// 水平反向输出（0默认，1反向）
-#define tilt_pos_upper_limit 140	//	倾斜最高极限（天线指向地平线）
-#define tilt_pos_lower_limit 50		// 倾斜最低极限（天线指向天空）
+#define tilt_pos_upper_limit 135	// 倾斜最高极限（天线指向地平线）
+#define tilt_pos_lower_limit 45		// 倾斜最低极限（天线指向天空）
 int panLow = PANLOW;
 int panHigh = PANHIGH;
 int tiltLow = TILTLOW;
@@ -319,7 +319,7 @@ void setup()
 	delay(4000);
 
 	lcd.begin(20, 2);
-	pinMode(8,OUTPUT);						//Pin mode as output to control buzzer (analog0)
+	pinMode(2,OUTPUT);						//Pin mode as output to control buzzer (analog0)
 	pinMode(11,OUTPUT);
 
 	//按键上拉

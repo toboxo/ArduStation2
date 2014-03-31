@@ -4,9 +4,9 @@ void buzz(int time, int freq)
   cli();
   for(int c=0; c<time; c++)
   {
-    digitalWrite(8,HIGH); 
+    digitalWrite(2,HIGH); 
     delayMicroseconds(freq);
-    digitalWrite(8,LOW); 
+    digitalWrite(2,LOW); 
     delayMicroseconds(freq);
   }
   sei();

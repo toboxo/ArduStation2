@@ -87,4 +87,5 @@ void save_param();
 #include "F:\Users\ENWIN\Documents\GitHub\ArduStation2\GPS_MATH.pde"
 #include "F:\Users\ENWIN\Documents\GitHub\ArduStation2\MAVLink.pde"
 #include "F:\Users\ENWIN\Documents\GitHub\ArduStation2\Params.pde"
+#include "F:\Users\ENWIN\Documents\GitHub\ArduStation2\parameter.h"
 #endif

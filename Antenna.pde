@@ -62,8 +62,10 @@ void SetAntennaPosition()
 			lcd_print_P(PSTR("~"));
 		else 
 			lcd_print_P(PSTR(" "));
+
 		lcd_print_P(PSTR("Tilt:"));
 		lcd.print(tilt_pos_upper_limit - tilt_pos);
+
 		lcd.setCursor(0,1);
 		lcd_print_P(PSTR("usec:"));
 		lcd.print(map( pan_pos, 0,180,panLow,panHigh));
@@ -115,9 +117,14 @@ void SetServoHardStop()
 	chg_angle=0;
 	if (pan_pos>180) 
 		pan_pos=180;
-	if (pan_pos < 0)
+	if (pan_pos<0)
 		pan_pos=0;
+	if (tilt_pos>180) 
+		tilt_pos=180;
+	if (tilt_pos<0)
+		tilt_pos=0;
 	Pan.slowmove(pan_pos,PAN_SPEED);
+	Tilt.slowmove(tilt_pos ,TILT_SPEED);
 	lcd.clear();
 
 	if (subMenu==1)
@@ -134,12 +141,12 @@ void SetServoHardStop()
 		lcd_print_P(PSTR("~"));
 	else
 		lcd_print_P(PSTR(" "));
- 
+
 	lcd_print_P(PSTR("Tilt:"));
 	lcd.print(tilt_pos);
 
 	lcd.setCursor(0,1);
-	lcd_print_P(PSTR("Compass="));
+	lcd_print_P(PSTR("Compass="));				//ÂÞÅÌ½Ç¶È
 	lcd.print((180.0-pan_pos)*2.0);
 	offset = pan_pos - 90.0;  
 	redraw=0;   

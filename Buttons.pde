@@ -147,9 +147,9 @@ void Check_Buttons(byte max_options) //Reading the buttons.
 		else if (menu == ANTS)		//ANTS
 		{
 			if (subMenu ==1)
-				tilt_pos -= 5;
+				tilt_pos += 5;
 			else
-				pan_pos -= 5;
+				pan_pos += 5;
 			redraw = 1;
 		}
 		else if (menu == 10)
@@ -353,9 +353,9 @@ void Check_Buttons(byte max_options) //Reading the buttons.
 		else if (menu == ANTS)
 		{
 			if (subMenu ==1)
-				tilt_pos += 5;
+				tilt_pos -= 5;
 			else
-				pan_pos += 5;
+				pan_pos -= 5;
 			redraw = 1;
 		}
 		else if (menu == 10)
