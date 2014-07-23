@@ -146,7 +146,7 @@ void SetServoHardStop()
 	lcd.print(tilt_pos);
 
 	lcd.setCursor(0,1);
-	lcd_print_P(PSTR("Compass="));				//ÂÞÅÌ½Ç¶È
+	lcd_print_P(PSTR("Compass="));				//ç½—ç›˜è§’åº¦
 	lcd.print((180.0-pan_pos)*2.0);
 	offset = pan_pos - 90.0;  
 	redraw=0;   
@@ -198,3 +198,4 @@ void position_antenna()
 	Tilt.slowmove(tilt_position,TILT_SPEED);
 
 }
+

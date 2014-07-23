@@ -65,3 +65,4 @@ float c = 2.0f * atan2(sqrt(a), sqrt(1.0f-a));
 float d = EarthsRadius * c;
 return d*1000.0;
 }
+

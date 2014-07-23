@@ -12,3 +12,4 @@ void buzz(int time, int freq)
   sei();
   #endif
 }
+

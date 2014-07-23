@@ -22,15 +22,15 @@ void flight_data() // menu 1
 
 				lcd.setCursor(0,0);
 				lcd.write(4);
-				lcd.print((altitude - Altitude_Home)* DIST_CONV);		//Ïà¶Ô¸ß¶È
+				lcd.print((altitude - Altitude_Home)* DIST_CONV);		//ç›¸å¯¹é«˜åº¦
 				lcd.setCursor(8,0);
 				lcd.write(5);
-				lcd.print(altitude * DIST_CONV );						//GPS¸ß¶È
+				lcd.print(altitude * DIST_CONV );						//GPSé«˜åº¦
 				lcd.setCursor(16,0);
 				lcd.write(3);
-				lcd.print(numSats);										//¿É¼ûÎÀĞÇÊı
+				lcd.print(numSats);										//å¯è§å«æ˜Ÿæ•°
 				lcd.setCursor(19,0); 
-				lcd.print(gpsfix);										//¶¨Î»·½Ê½
+				lcd.print(gpsfix);										//å®šä½æ–¹å¼
 
 				lcd.setCursor(0,1); 
 				lcd.write(6);
@@ -44,7 +44,7 @@ void flight_data() // menu 1
 
 				lcd.setCursor(10,1); 
 				lcd.write(7);
-				lcd.print(Bearing_Home*2.0,0);							//·½Î»
+				lcd.print(Bearing_Home*2.0,0);							//æ–¹ä½
 
 				float form_bat = battery / 1000;
 				if (form_bat>=10)
@@ -53,9 +53,9 @@ void flight_data() // menu 1
 					lcd.setCursor(16,1);
 
 				lcd.write(9); 		
-				lcd.print(form_bat,1);									//µ±Ç°µçÁ¿
+				lcd.print(form_bat,1);									//å½“å‰ç”µé‡
 
-				if ((form_bat<VoltWarn)&& (form_bat>0.01))				//µçÑ¹Îª0¡¢Ã»ÓĞ´«¸ĞÆ÷ĞÅºÅ¡¢Ã»ÓĞXbee ²»½øĞĞÌáÊ¾
+				if ((form_bat<VoltWarn)&& (form_bat>0.01))				//ç”µå‹ä¸º0ã€æ²¡æœ‰ä¼ æ„Ÿå™¨ä¿¡å·ã€æ²¡æœ‰Xbee ä¸è¿›è¡Œæç¤º
 				{
 					buzz(100,200);
 				}
@@ -74,22 +74,22 @@ void flight_data() // menu 1
 				lcd.setCursor(0, 0);
 
 				lcd_print_P(PSTR("D2D:"));
-				lcd.print(Distance_Home * DIST_CONV);					//¾àÀë
+				lcd.print(Distance_Home * DIST_CONV);					//è·ç¦»
 
 				lcd.setCursor(10,0);	
 
 				lcd_print_P(PSTR("Angle:"));
-				lcd.print(Angle_Home);									//½Ç¶È
+				lcd.print(Angle_Home);									//è§’åº¦
 
 				lcd.setCursor(0,1);	
 				lcd_print_P(PSTR("D3D:"));
-				lcd.print(Distance3D_Home * DIST_CONV);					//3D¾àÀë
+				lcd.print(Distance3D_Home * DIST_CONV);					//3Dè·ç¦»
 
 				lcd.setCursor(10,1);
 				lcd_print_P(PSTR("Dir:"));
 				lcd.print(SvBearingHome);
 
-				//lcd_print_P(PSTR("Alg~"));							//¼ÆËãËã·¨
+				//lcd_print_P(PSTR("Alg~"));							//è®¡ç®—ç®—æ³•
 				//lcd.print(rng_bear_alg);
 				break;
 			}
@@ -132,3 +132,4 @@ void flight_data() // menu 1
 		}
 	}
 }
+

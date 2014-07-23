@@ -58,7 +58,7 @@ FastSerialPort0(Serial);
 
 #define DIST_CONV 1.0   // For distance display in meters choose 0.0, for feet 3.2808
 
-LiquidCrystal lcd(  3, 4, 5, 6, 7,8); //³õÊ¼»¯LCD 234567
+LiquidCrystal lcd(  3, 4, 5, 6, 7,8); //åˆå§‹åŒ–LCD 234567
 
 void lcd_print_P(const char *string)
 {
@@ -73,30 +73,30 @@ void lcd_print_P(const char *string)
 unsigned long hb_timer;
 unsigned long timer;
 
-#define ALTITUDE_CHOICE 1			//Ñ¡ÔñGPSº£°Î¸ß¶È»òVFR HUD£¨À´×ÔÆøÑ¹£©£¨0 = GPS, 1 = VFR HUD£©
-#define TILT_SPEED 0				//ÇãĞ±ËÅ·şËÙ¶È£¨0 =¾ÉÄ£Ê½£¨¿ìËÙ£©£¬1 =×îÂıµÄËÙ¶È£¬255 =×î¿ìµÄËÙ¶È£©
-#define PAN_SPEED 0					//Ë®Æ½ËÅ·şËÙ¶È£¨0 =¾ÉÄ£Ê½£¨¿ìËÙ£©£¬1 =×îÂıµÄËÙ¶È£¬255 =×î¿ìµÄËÙ¶È£©
-#define SERVO_MAX 2600				//¶æ»ú¸©ÑöºÍ¹ö×ª·¶Î§
+#define ALTITUDE_CHOICE 1			//é€‰æ‹©GPSæµ·æ‹”é«˜åº¦æˆ–VFR HUDï¼ˆæ¥è‡ªæ°”å‹ï¼‰ï¼ˆ0 = GPS, 1 = VFR HUDï¼‰
+#define TILT_SPEED 0				//å€¾æ–œä¼ºæœé€Ÿåº¦ï¼ˆ0 =æ—§æ¨¡å¼ï¼ˆå¿«é€Ÿï¼‰ï¼Œ1 =æœ€æ…¢çš„é€Ÿåº¦ï¼Œ255 =æœ€å¿«çš„é€Ÿåº¦ï¼‰
+#define PAN_SPEED 0					//æ°´å¹³ä¼ºæœé€Ÿåº¦ï¼ˆ0 =æ—§æ¨¡å¼ï¼ˆå¿«é€Ÿï¼‰ï¼Œ1 =æœ€æ…¢çš„é€Ÿåº¦ï¼Œ255 =æœ€å¿«çš„é€Ÿåº¦ï¼‰
+#define SERVO_MAX 2600				//èˆµæœºä¿¯ä»°å’Œæ»šè½¬èŒƒå›´
 #define SERVO_MIN 400
-#define TEST_TILT 0					//²âÊÔÇãĞ±×î´óºÍ×îĞ¡£¨Ğ£×¼£©
-#define TEST_PAN 0					//²âÊÔÆ½Ì¨µÄ×îĞ¡ºÍ×î´óÖµ£¨Ğ£×¼£©
-#define TEST_SOUTH 0				//²âÊÔÄÏ
+#define TEST_TILT 0					//æµ‹è¯•å€¾æ–œæœ€å¤§å’Œæœ€å°ï¼ˆæ ¡å‡†ï¼‰
+#define TEST_PAN 0					//æµ‹è¯•å¹³å°çš„æœ€å°å’Œæœ€å¤§å€¼ï¼ˆæ ¡å‡†ï¼‰
+#define TEST_SOUTH 0				//æµ‹è¯•å—
 VarSpeedServo Tilt;
 VarSpeedServo Pan;
 #define TILTLOW 1000
 #define TILTHIGH 2000
 #define PANLOW  980					 
 #define PANHIGH 2020
-#define TILTREVERSE 0				// ÇãĞ±·´Êä³ö£¨0Ä¬ÈÏ£¬1·´Ïò£©
-#define PANREVERSE 0				// Ë®Æ½·´ÏòÊä³ö£¨0Ä¬ÈÏ£¬1·´Ïò£©
-#define tilt_pos_upper_limit 135	// ÇãĞ±×î¸ß¼«ÏŞ£¨ÌìÏßÖ¸ÏòµØÆ½Ïß£©
-#define tilt_pos_lower_limit 45		// ÇãĞ±×îµÍ¼«ÏŞ£¨ÌìÏßÖ¸ÏòÌì¿Õ£©
+#define TILTREVERSE 0				// å€¾æ–œåè¾“å‡ºï¼ˆ0é»˜è®¤ï¼Œ1åå‘ï¼‰
+#define PANREVERSE 0				// æ°´å¹³åå‘è¾“å‡ºï¼ˆ0é»˜è®¤ï¼Œ1åå‘ï¼‰
+#define tilt_pos_upper_limit 135	// å€¾æ–œæœ€é«˜æé™ï¼ˆå¤©çº¿æŒ‡å‘åœ°å¹³çº¿ï¼‰
+#define tilt_pos_lower_limit 45		// å€¾æ–œæœ€ä½æé™ï¼ˆå¤©çº¿æŒ‡å‘å¤©ç©ºï¼‰
 int panLow = PANLOW;
 int panHigh = PANHIGH;
 int tiltLow = TILTLOW;
 int tiltHigh = TILTHIGH;
 
-//Servo±äÁ¿
+//Servoå˜é‡
 int pan_pos = 90;
 int tilt_pos = 90;
 int chg_angle = 0;
@@ -116,10 +116,10 @@ int Constrain_Angle_Home = 0;
 float Bearing_Home=0;
 float SvBearingHome = 0;
 
-float VoltWarn = 10.6;				//±¨¾¯µçÑ¹
+float VoltWarn = 10.6;				//æŠ¥è­¦ç”µå‹
 float offset = 0;
-//·ÉĞĞÊı¾İ
-byte relAltitude = 0;				//Èç¹ûÎª1ÏÔÊ¾µ±Ç°GPSÏà¶Ô¸ß¶È£¬0ÎªGPS ALTº£°Î
+//é£è¡Œæ•°æ®
+byte relAltitude = 0;				//å¦‚æœä¸º1æ˜¾ç¤ºå½“å‰GPSç›¸å¯¹é«˜åº¦ï¼Œ0ä¸ºGPS ALTæµ·æ‹”
 float altitude=0.0;
 float pitch=0;
 float roll=0;
@@ -129,15 +129,15 @@ float latitude=0;
 float latoffset = 0.0;
 float altoffset = 100.0;
 float velocity = 0;
-int numSats=0;						//¿ÉÓÃÎÀĞÇÊı
-float battery=0;					//µç³ØµçÑ¹
+int numSats=0;						//å¯ç”¨å«æ˜Ÿæ•°
+float battery=0;					//ç”µæ± ç”µå‹
 byte MakeNoise = 0;
 int currentSMode=0;
 int currentNMode=0;
 int gpsfix=0;
 
-//²Ëµ¥Êı¾İ
-byte editServo = 0;					//0 Ë®Æ½ 1ÇãĞ±ÌìÏß , 2±à¼­Ë®Æ½¶æ»ú-µÍ, 3±à¼­Ë®Æ½¶æ»ú-¸ß, 4±à¼­ÇãĞ±¶æ»ú-µÍ, 5±à¼­ÇãĞ±¶æ»ú-¸ß
+//èœå•æ•°æ®
+byte editServo = 0;					//0 æ°´å¹³ 1å€¾æ–œå¤©çº¿ , 2ç¼–è¾‘æ°´å¹³èˆµæœº-ä½, 3ç¼–è¾‘æ°´å¹³èˆµæœº-é«˜, 4ç¼–è¾‘å€¾æ–œèˆµæœº-ä½, 5ç¼–è¾‘å€¾æ–œèˆµæœº-é«˜
 byte menu=0;
 byte subMenu=0;
 byte currentOption=0;
@@ -148,30 +148,30 @@ byte waitingAck=0;
 parameter editParm;
 byte paramsRecv=0;
 byte beat=0;
-byte droneType = 1;					// 0 =²»ÉèÖÃ, 1 = APM, 2 = ACM  -¿ÉÒÔ´ÓmavlinkĞÄÌø¶ÁÈ¡,µ«ÊÇACM·µ»Ø0,²»ÊÇ2
-byte autoPilot = 3;					// APMÓ¦¸ÃÎª3
-uint8_t received_sysid=0;			// ĞÄÌø·¢ËÍ¶ËÏµÍ³ID
-uint8_t received_compid=0;			// ĞÄÌø·¢ËÍ¶Ë×é¼şID
+byte droneType = 1;					// 0 =ä¸è®¾ç½®, 1 = APM, 2 = ACM  -å¯ä»¥ä»mavlinkå¿ƒè·³è¯»å–,ä½†æ˜¯ACMè¿”å›0,ä¸æ˜¯2
+byte autoPilot = 3;					// APMåº”è¯¥ä¸º3
+uint8_t received_sysid=0;			// å¿ƒè·³å‘é€ç«¯ç³»ç»ŸID
+uint8_t received_compid=0;			// å¿ƒè·³å‘é€ç«¯ç»„ä»¶ID
 byte TOTAL_PARAMS = ACM_PARAMS;		// default total params to ACM set up
 
-byte rng_bear_alg = 0;				// 0 =Ê¹ÓÃ3DRËã·¨£¬1£½Ê¹ÓÃ½ÜÄ·Ë¹ÕÉ·òµÄËã·¨£¨ÔÚ°Ä´óÀûÑÇ¸ü¾«È·£©
+byte rng_bear_alg = 0;				// 0 =ä½¿ç”¨3DRç®—æ³•ï¼Œ1ï¼ä½¿ç”¨æ°å§†æ–¯ä¸ˆå¤«çš„ç®—æ³•ï¼ˆåœ¨æ¾³å¤§åˆ©äºšæ›´ç²¾ç¡®ï¼‰
 
-long timeLastByte = 0;				//±£´æµÄ×îºóÒ»ÌõÏûÏ¢×Ö½Ú½ÓÊÕÊ±¼ä¶ø²»ÊÇmavlinkÏĞÖÃ£¬ÉèÖÃÎª0ÔÚÏĞÖÃ¹ı³ÌÖĞ£¬Ã»ÓĞÏûÏ¢
+long timeLastByte = 0;				//ä¿å­˜çš„æœ€åä¸€æ¡æ¶ˆæ¯å­—èŠ‚æ¥æ”¶æ—¶é—´è€Œä¸æ˜¯mavlinké—²ç½®ï¼Œè®¾ç½®ä¸º0åœ¨é—²ç½®è¿‡ç¨‹ä¸­ï¼Œæ²¡æœ‰æ¶ˆæ¯
 long maxByteTime = 0;
 
 
-byte numGoodHeartbeats = 0;			//¼ì²éÈı¸öÓĞĞ§µÄĞÄÌø²¢¹Ø±ÕmavlinkÀàĞÍ´íÎó
+byte numGoodHeartbeats = 0;			//æ£€æŸ¥ä¸‰ä¸ªæœ‰æ•ˆçš„å¿ƒè·³å¹¶å…³é—­mavlinkç±»å‹é”™è¯¯
 
 
-long lastByteTime = 0;				//±£´æ´Ó´®¿Ú¶ÁÈ¡×îºóÒ»¸ö×Ö½ÚµÄÊ±¼ä
-uint8_t byt[15];					//±£´æ½ÓÊÕµÄ×Ö½ÚÊı
+long lastByteTime = 0;				//ä¿å­˜ä»ä¸²å£è¯»å–æœ€åä¸€ä¸ªå­—èŠ‚çš„æ—¶é—´
+uint8_t byt[15];					//ä¿å­˜æ¥æ”¶çš„å­—èŠ‚æ•°
 uint8_t byt_Counter = 0;
 uint8_t b_ct;
 int byte_per_half_sec = 0;
 int last_byte_per = 0;
 
-//´íÎómavlink°æ±¾¼ì²â
-byte wrongMavlinkState = 0;			//¼ì²é´®¿ÚµÄÊı¾İ£¬¼ì²â´íÎóµÄmavlink°æ±¾£¬0×´Ì¬ÒâÎ¶mavlinkÍ·Ã»ÓĞ¼ì²âµ½£¬5×´Ì¬±íÊ¾½ÓÊÜÁË´íÎóµÄmavlink¸ñÊ½
+//é”™è¯¯mavlinkç‰ˆæœ¬æ£€æµ‹
+byte wrongMavlinkState = 0;			//æ£€æŸ¥ä¸²å£çš„æ•°æ®ï¼Œæ£€æµ‹é”™è¯¯çš„mavlinkç‰ˆæœ¬ï¼Œ0çŠ¶æ€æ„å‘³mavlinkå¤´æ²¡æœ‰æ£€æµ‹åˆ°ï¼Œ5çŠ¶æ€è¡¨ç¤ºæ¥å—äº†é”™è¯¯çš„mavlinkæ ¼å¼
 byte packetStartByte = 0;			//0x55 Mavlink 0.9, 0xFE Mavlink 1.0
 
 byte LCDHEART[8] = {
@@ -322,7 +322,7 @@ void setup()
 	pinMode(2,OUTPUT);						//Pin mode as output to control buzzer (analog0)
 	pinMode(11,OUTPUT);
 
-	//°´¼üÉÏÀ­
+	//æŒ‰é”®ä¸Šæ‹‰
 	pinMode	(A0,INPUT);
 	pinMode	(A1,INPUT);
 	pinMode	(A2,INPUT);
@@ -355,7 +355,7 @@ void setup()
 
 void loop()
 {
-	//Èç¹ûÎÒÃÇ¼ì²âµ½´íÎóµÄMavlink°æ±¾£¬½«ÏÔÊ¾"wrong version"£¬²»´¦Àí²Ëµ¥.
+	//å¦‚æœæˆ‘ä»¬æ£€æµ‹åˆ°é”™è¯¯çš„Mavlinkç‰ˆæœ¬ï¼Œå°†æ˜¾ç¤º"wrong version"ï¼Œä¸å¤„ç†èœå•.
 
 	if (numGoodHeartbeats<3) // Shut this test down when we get 3 good valid Mavlink heartbeats
 	{
@@ -376,7 +376,7 @@ void loop()
 		}
 	}
 
-	//Ö÷²Ëµ¥Âß¼­
+	//ä¸»èœå•é€»è¾‘
 	switch (menu)
 	{
 	case MAIN_MENU: // main menu
@@ -507,7 +507,7 @@ void lcd_debug(char* msg)
 	lcd.print(msg);
 }
 
-void main_menu() //Ö÷²Ëµ¥ÏÔÊ¾
+void main_menu() //ä¸»èœå•æ˜¾ç¤º
 {
 	lcd.clear();
 	if (currentOption < 4)
@@ -566,3 +566,4 @@ void main_menu() //Ö÷²Ëµ¥ÏÔÊ¾
 //	free(buf);
 //	return size;
 //}
+
